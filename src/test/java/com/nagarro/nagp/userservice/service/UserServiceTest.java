@@ -1,20 +1,19 @@
-package com.nagarro.nagp.userservice.controller.unittest.service;
+package com.nagarro.nagp.userservice.service;
 
 import com.nagarro.nagp.userservice.exception.UserException;
 import com.nagarro.nagp.userservice.model.User;
 import com.nagarro.nagp.userservice.repository.UserRepository;
-import com.nagarro.nagp.userservice.service.UserService;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Optional;
 
-@RunWith(SpringRunner.class)
+import static org.junit.Assert.assertEquals;
+
+@SpringBootTest
 public class UserServiceTest {
 
 
@@ -24,7 +23,7 @@ public class UserServiceTest {
     @MockBean
     private UserRepository userRepository;
 
-    @Before
+    @BeforeEach
     public void setup() {
         this.userService = new UserService(userRepository);
     }
@@ -44,7 +43,7 @@ public class UserServiceTest {
 
         User response = this.userService.createUser(user);
 
-        Assert.assertEquals(user.getName(), response.getName());
+        assertEquals(user.getName(), response.getName());
     }
 
     @Test
@@ -61,7 +60,7 @@ public class UserServiceTest {
 
         User response = this.userService.fetchUser(1);
 
-        Assert.assertEquals(user.get().getName(), response.getName());
+        assertEquals(user.get().getName(), response.getName());
     }
 
 

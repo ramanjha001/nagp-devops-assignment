@@ -22,7 +22,7 @@ public class UserServiceController {
         this.userService = userService;
     }
 
-    @PostMapping("/create")
+    @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> createUser(@RequestBody User user) {
 
         User createdUser = this.userService.createUser(user);

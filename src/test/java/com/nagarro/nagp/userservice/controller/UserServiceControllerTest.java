@@ -1,20 +1,19 @@
-package com.nagarro.nagp.userservice.controller.unittest.controller;
+package com.nagarro.nagp.userservice.controller;
 
-import com.nagarro.nagp.userservice.controller.UserServiceController;
 import com.nagarro.nagp.userservice.exception.UserException;
 import com.nagarro.nagp.userservice.model.User;
 import com.nagarro.nagp.userservice.service.UserService;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
+import static org.junit.Assert.assertEquals;
+
+@SpringBootTest
 public class UserServiceControllerTest {
 
     @MockBean
@@ -23,7 +22,7 @@ public class UserServiceControllerTest {
     @MockBean
     private UserService userService;
 
-    @Before
+    @BeforeEach
     public void setup() {
         this.userServiceController = new UserServiceController(userService);
     }
@@ -43,7 +42,7 @@ public class UserServiceControllerTest {
 
         ResponseEntity<User> responseEntity = this.userServiceController.createUser(user);
 
-        Assert.assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
+        assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
     }
 
     @Test
@@ -60,7 +59,7 @@ public class UserServiceControllerTest {
 
         ResponseEntity<User> responseEntity = this.userServiceController.fetchUser(1);
 
-        Assert.assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
     }
 
 }
