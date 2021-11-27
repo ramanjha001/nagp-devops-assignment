@@ -5,10 +5,10 @@ server:
 
 spring:
   application:
-    name: userservice
+    name: userservice-test
   datasource:
-    #devops-mysql is the name of container on which mysql would be running
-    url: jdbc:mysql://devops-mysql:3306/usernagpdemodb?createDatabaseIfNotExist=true
+    #devops-mysql is the name of container on which mysql is running
+    url: jdbc:mysql://localhost:3306/usernagpdemodb
     username: root
     password: ramanjha
   jpa:

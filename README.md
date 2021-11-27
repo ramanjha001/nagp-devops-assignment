@@ -1,9 +1,19 @@
 # NAGP DEVOPS DEMO PROJECT
 
 
-Steps to run this project:
+Clone this Git repository : https://github.com/ramanjha001/nagp-devops-assignment.git
 
-1. Clone this Git repository : https://github.com/ramanjha001/nagp-devops-assignment.git
-2. To Run only unit test : `mvn clean test`
-3. To Run only integration test : mvn integration-test -DskipUnitTests
-4. To Run both unit and integration test together : `mvn clean verify` 
+Steps to test cases:
+
+1. To Run only unit test : `mvn clean test`
+2. To Run only integration test : `mvn integration-test -DskipUnitTests`
+3. To Run both unit and integration test together : `mvn clean verify` 
+
+
+Steps to run userservice and mysql in container using docker images:
+
+1. Pull mysql : `docker pull mysql`
+2. Run mysql container using mysql image :  `docker run --name devops-mysql --rm -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=ramanjha mysql`
+3. Build docker image of created service : `docker build -t devops-nagp-userservice .`
+4. Run container using  devops-nagp-userservice image : `docker run -p 8085:8085 --link devops-mysql:mysql --rm --name devops-mysql-demo devops-nagp-userservice`
+
