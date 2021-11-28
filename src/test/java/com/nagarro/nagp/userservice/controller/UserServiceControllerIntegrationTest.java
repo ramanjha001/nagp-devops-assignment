@@ -24,6 +24,7 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @TestPropertySource(locations = "classpath:application-integration-test.yml")
+@ActiveProfiles("integration-test")
 public class UserServiceControllerIntegrationTest {
 
     @LocalServerPort
