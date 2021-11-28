@@ -1,0 +1,16 @@
+version: "3.3"
+services:
+  mysql:
+    image: 'mysql'
+    container_name: 'devops-mysql'
+    environment:
+      MYSQL_ROOT_PASSWORD: ramanjha
+    ports:
+      - '3306:3306'
+  userservice:
+    build: ./
+    container_name: 'devops-mysql-assignment'
+    ports:
+      - '8085:8085'
+    depends_on:
+      - mysql
