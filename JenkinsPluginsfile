@@ -2,3 +2,7 @@ Jenkins Plugins:
 a)	Git plugin
 b)	GitHub API plugin
 c)	Maven Integration plugin
+d)  Docker API
+e)  Docker Pipeline
+f)  Docker
+g)  Amazon EC2

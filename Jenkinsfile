@@ -1,5 +1,5 @@
 pipeline{
-     agent any
+     agent { label "docker"}
 
      tools {
              maven 'M2_HOME'
@@ -9,25 +9,25 @@ pipeline{
      stages{
          stage('Build') {
             steps {
-               bat 'mvn clean compile'
+               sh 'mvn clean compile'
             }
          }
 
          stage('Unit Test') {
              steps {
-                bat 'mvn clean test'
+                sh 'mvn clean test'
              }
          }
 
          stage('Integration Test') {
             steps {
-               bat 'mvn integration-test -DskipUnitTests'
+               sh 'mvn integration-test -DskipUnitTests'
             }
          }
 
          stage('Package') {
             steps {
-               bat 'mvn clean package'
+               sh 'mvn clean package'
             }
          }
      }
