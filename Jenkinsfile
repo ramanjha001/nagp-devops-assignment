@@ -6,6 +6,10 @@ pipeline{
              jdk 'JAVA_HOME'
            }
 
+     environment {
+         dockerHubCredentials = 'dockerHubCredentials'
+     }
+
      stages{
          stage('Build') {
             steps {
@@ -30,5 +34,15 @@ pipeline{
                sh 'mvn clean package'
             }
          }
-     }
+
+         stage('Build & Publish Docker Image') {
+            steps {
+               script {
+                  dockerImage = docker.build 'ramanjha001/nagp-devops:v1'
+                  docker.withRegistry('', dockerHubCredentials) {
+                     dockerImage.push("v1")
+                  }
+               }
+            }
+         }
 }

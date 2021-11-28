@@ -7,14 +7,13 @@ spring:
   application:
     name: userservice-test
   datasource:
-    #devops-mysql is the name of container on which mysql is running
     url: jdbc:mysql://localhost:3306/usernagpdemodb
     username: root
     password: ramanjha
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: none
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
