@@ -2,6 +2,7 @@ version: "3.3"
 services:
   mysql:
     image: 'mysql'
+    restart: on-failure
     container_name: 'devops-mysql'
     environment:
       MYSQL_ROOT_PASSWORD: ramanjha
@@ -9,6 +10,7 @@ services:
       - '3306:3306'
   userservice:
     build: ./
+    restart: on-failure
     container_name: 'devops-mysql-assignment'
     ports:
       - '8085:8085'
